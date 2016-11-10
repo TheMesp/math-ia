@@ -1,0 +1,2 @@
+c:\users\dave\documents\visual studio 2015\Projects\Math Random IA\Math Random IA\bin\Debug\Math Random IA.exe.config
+C:\Users\Dave\Documents\Visual Studio 2015\Projects\Math Random IA\math-ia\bin\Debug\Math Random IA.exe.config
