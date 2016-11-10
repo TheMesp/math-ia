@@ -20,6 +20,7 @@ namespace Math_Random_IA
         float[] rands = new float[4];
         float output;
         int[] dataCollection = new int[40];
+        int attempts = 0;
         //The index divided by ten equals the result of the function - and we increase the int stored in that index slot by one when we get one there.
         float generate(float[] r)
         {
@@ -38,16 +39,18 @@ namespace Math_Random_IA
 
         private void btnEnter_Click(object sender, EventArgs e)
         {
-            for (int count = 0; count < 10000000; count++)
+            for (int count = 0; count < 1000000; count++)
             {
                 for (int i = 0; i < rands.Length; i++)
                 {
                     rands[i] = (float)random.NextDouble();
                 }
+                attempts++;
                 output = generate(rands);
                 dataCollection[(int)Math.Floor(output * 10)]++;
             }
             lblOutput.ResetText();
+            lblOutput.Text += attempts;
             for (int i = 0; i < dataCollection.Length; i++)
             {
                 lblOutput.Text += "\r\n" + i / 10f + ": " + dataCollection[i];
@@ -56,6 +59,7 @@ namespace Math_Random_IA
 
         private void btnReset_Click(object sender, EventArgs e)
         {
+            attempts = 0;
             lblOutput.ResetText();
             for (int i = 0; i < dataCollection.Length; i++)
             {

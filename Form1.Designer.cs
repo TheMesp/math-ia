@@ -28,11 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea4 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend4 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series4 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint7 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(0D, 1D);
-            System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint8 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(0.1D, 1D);
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea5 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend5 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series5 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint9 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(0D, 1D);
+            System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint10 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(0.1D, 1D);
             this.btnEnter = new System.Windows.Forms.Button();
             this.lblOutput = new System.Windows.Forms.Label();
             this.chrData = new System.Windows.Forms.DataVisualization.Charting.Chart();
@@ -56,30 +56,30 @@
             this.lblOutput.BackColor = System.Drawing.SystemColors.Control;
             this.lblOutput.Location = new System.Drawing.Point(12, 38);
             this.lblOutput.Name = "lblOutput";
-            this.lblOutput.Size = new System.Drawing.Size(75, 558);
+            this.lblOutput.Size = new System.Drawing.Size(156, 558);
             this.lblOutput.TabIndex = 1;
             this.lblOutput.Text = ":^)";
             this.lblOutput.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
             // chrData
             // 
-            chartArea4.Name = "ChartArea1";
-            this.chrData.ChartAreas.Add(chartArea4);
-            legend4.Name = "Legend1";
-            this.chrData.Legends.Add(legend4);
+            chartArea5.Name = "ChartArea1";
+            this.chrData.ChartAreas.Add(chartArea5);
+            legend5.Name = "Legend1";
+            this.chrData.Legends.Add(legend5);
             this.chrData.Location = new System.Drawing.Point(174, 12);
             this.chrData.Name = "chrData";
-            series4.ChartArea = "ChartArea1";
-            series4.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Area;
-            series4.IsXValueIndexed = true;
-            series4.Legend = "Legend1";
-            series4.Name = "Series";
-            dataPoint7.IsValueShownAsLabel = true;
-            series4.Points.Add(dataPoint7);
-            series4.Points.Add(dataPoint8);
-            series4.XValueType = System.Windows.Forms.DataVisualization.Charting.ChartValueType.Double;
-            series4.YValueType = System.Windows.Forms.DataVisualization.Charting.ChartValueType.Double;
-            this.chrData.Series.Add(series4);
+            series5.ChartArea = "ChartArea1";
+            series5.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Area;
+            series5.IsXValueIndexed = true;
+            series5.Legend = "Legend1";
+            series5.Name = "Series";
+            dataPoint9.IsValueShownAsLabel = true;
+            series5.Points.Add(dataPoint9);
+            series5.Points.Add(dataPoint10);
+            series5.XValueType = System.Windows.Forms.DataVisualization.Charting.ChartValueType.Double;
+            series5.YValueType = System.Windows.Forms.DataVisualization.Charting.ChartValueType.Double;
+            this.chrData.Series.Add(series5);
             this.chrData.Size = new System.Drawing.Size(300, 300);
             this.chrData.TabIndex = 2;
             this.chrData.Text = "Data Chart";
