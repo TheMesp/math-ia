@@ -1,2 +1,10 @@
 c:\users\dave\documents\visual studio 2015\Projects\Math Random IA\Math Random IA\bin\Debug\Math Random IA.exe.config
 C:\Users\Dave\Documents\Visual Studio 2015\Projects\Math Random IA\math-ia\bin\Debug\Math Random IA.exe.config
+C:\Users\Dave\Documents\Visual Studio 2015\Projects\Math Random IA\math-ia\bin\Debug\Math Random IA.exe
+C:\Users\Dave\Documents\Visual Studio 2015\Projects\Math Random IA\math-ia\bin\Debug\Math Random IA.pdb
+C:\Users\Dave\Documents\Visual Studio 2015\Projects\Math Random IA\math-ia\obj\Debug\Math Random IA.csprojResolveAssemblyReference.cache
+C:\Users\Dave\Documents\Visual Studio 2015\Projects\Math Random IA\math-ia\obj\Debug\Math_Random_IA.frmMain.resources
+C:\Users\Dave\Documents\Visual Studio 2015\Projects\Math Random IA\math-ia\obj\Debug\Math_Random_IA.Properties.Resources.resources
+C:\Users\Dave\Documents\Visual Studio 2015\Projects\Math Random IA\math-ia\obj\Debug\Math Random IA.csproj.GenerateResource.Cache
+C:\Users\Dave\Documents\Visual Studio 2015\Projects\Math Random IA\math-ia\obj\Debug\Math Random IA.exe
+C:\Users\Dave\Documents\Visual Studio 2015\Projects\Math Random IA\math-ia\obj\Debug\Math Random IA.pdb
