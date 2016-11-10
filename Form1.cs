@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Windows.Forms.DataVisualization.Charting;
 //David Loewen
 //Random Graphing Application
 //November 10th, 2016
@@ -44,7 +45,7 @@ namespace Math_Random_IA
                 "\r\n r3 = " + rands[2] +
                 "\r\n r4 = " + rands[3] +
                 "\r\n rfinal = " + generate(rands);
-
+            
         }
 
     }
