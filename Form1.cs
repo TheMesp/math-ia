@@ -18,6 +18,9 @@ namespace Math_Random_IA
     {
         Random random = new Random();
         float[] rands = new float[4];
+        float output;
+        int[] dataCollection = new int[40];
+        //The index divided by ten equals the result of the function - and we increase the int stored in that index slot by one when we get one there.
         float generate(float[] r)
         {
             //This isn't exactly good style, but I'll only be putting in arrays with 4 indexes (0-3) so it's fine
@@ -35,18 +38,30 @@ namespace Math_Random_IA
 
         private void btnEnter_Click(object sender, EventArgs e)
         {
-            for(int i = 0; i < rands.Length; i++)
+            for (int count = 0; count < 10000000; count++)
             {
-                rands[i] = (float)random.NextDouble();
+                for (int i = 0; i < rands.Length; i++)
+                {
+                    rands[i] = (float)random.NextDouble();
+                }
+                output = generate(rands);
+                dataCollection[(int)Math.Floor(output * 10)]++;
             }
-            lblOutput.Text =
-                " r1 = " + rands[0] +
-                "\r\n r2 = " + rands[1] +
-                "\r\n r3 = " + rands[2] +
-                "\r\n r4 = " + rands[3] +
-                "\r\n rfinal = " + generate(rands);
-            
+            lblOutput.ResetText();
+            for (int i = 0; i < dataCollection.Length; i++)
+            {
+                lblOutput.Text += "\r\n" + i / 10f + ": " + dataCollection[i];
+            }
         }
 
+        private void btnReset_Click(object sender, EventArgs e)
+        {
+            lblOutput.ResetText();
+            for (int i = 0; i < dataCollection.Length; i++)
+            {
+                dataCollection[i] = 0;
+                lblOutput.Text += "\r\n" + i / 10f + ": " + dataCollection[i];
+            }
+        }
     }
 }
