@@ -28,15 +28,17 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea5 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend5 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series5 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint9 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(0D, 1D);
-            System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint10 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(0.1D, 1D);
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint1 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(0D, 1D);
+            System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint2 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(0.1D, 1D);
+            System.Windows.Forms.DataVisualization.Charting.Title title1 = new System.Windows.Forms.DataVisualization.Charting.Title();
+            System.Windows.Forms.DataVisualization.Charting.Title title2 = new System.Windows.Forms.DataVisualization.Charting.Title();
             this.btnEnter = new System.Windows.Forms.Button();
             this.lblOutput = new System.Windows.Forms.Label();
             this.chrData = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.btnReset = new System.Windows.Forms.Button();
+            this.txtInput = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.chrData)).BeginInit();
             this.SuspendLayout();
             // 
@@ -63,26 +65,30 @@
             // 
             // chrData
             // 
-            chartArea5.Name = "ChartArea1";
-            this.chrData.ChartAreas.Add(chartArea5);
-            legend5.Name = "Legend1";
-            this.chrData.Legends.Add(legend5);
-            this.chrData.Location = new System.Drawing.Point(174, 12);
+            chartArea1.Name = "ChartArea1";
+            this.chrData.ChartAreas.Add(chartArea1);
+            this.chrData.Location = new System.Drawing.Point(176, 38);
             this.chrData.Name = "chrData";
-            series5.ChartArea = "ChartArea1";
-            series5.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Area;
-            series5.IsXValueIndexed = true;
-            series5.Legend = "Legend1";
-            series5.Name = "Series";
-            dataPoint9.IsValueShownAsLabel = true;
-            series5.Points.Add(dataPoint9);
-            series5.Points.Add(dataPoint10);
-            series5.XValueType = System.Windows.Forms.DataVisualization.Charting.ChartValueType.Double;
-            series5.YValueType = System.Windows.Forms.DataVisualization.Charting.ChartValueType.Double;
-            this.chrData.Series.Add(series5);
-            this.chrData.Size = new System.Drawing.Size(300, 300);
+            series1.ChartArea = "ChartArea1";
+            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Area;
+            series1.IsXValueIndexed = true;
+            series1.Name = "Series";
+            dataPoint1.IsValueShownAsLabel = false;
+            series1.Points.Add(dataPoint1);
+            series1.Points.Add(dataPoint2);
+            series1.XValueType = System.Windows.Forms.DataVisualization.Charting.ChartValueType.Double;
+            series1.YValueType = System.Windows.Forms.DataVisualization.Charting.ChartValueType.Double;
+            this.chrData.Series.Add(series1);
+            this.chrData.Size = new System.Drawing.Size(1262, 555);
             this.chrData.TabIndex = 2;
             this.chrData.Text = "Data Chart";
+            title1.Name = "Title1";
+            title1.Text = "Result obtained (truncated)";
+            title2.Docking = System.Windows.Forms.DataVisualization.Charting.Docking.Left;
+            title2.Name = "Title2";
+            title2.Text = "Times obtained";
+            this.chrData.Titles.Add(title1);
+            this.chrData.Titles.Add(title2);
             // 
             // btnReset
             // 
@@ -95,11 +101,19 @@
             this.btnReset.UseVisualStyleBackColor = true;
             this.btnReset.Click += new System.EventHandler(this.btnReset_Click);
             // 
+            // txtInput
+            // 
+            this.txtInput.Location = new System.Drawing.Point(176, 12);
+            this.txtInput.Name = "txtInput";
+            this.txtInput.Size = new System.Drawing.Size(100, 20);
+            this.txtInput.TabIndex = 4;
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(488, 605);
+            this.ClientSize = new System.Drawing.Size(1450, 605);
+            this.Controls.Add(this.txtInput);
             this.Controls.Add(this.btnReset);
             this.Controls.Add(this.chrData);
             this.Controls.Add(this.lblOutput);
@@ -109,6 +123,7 @@
             this.Load += new System.EventHandler(this.frmMain_Load);
             ((System.ComponentModel.ISupportInitialize)(this.chrData)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -118,6 +133,7 @@
         private System.Windows.Forms.Label lblOutput;
         private System.Windows.Forms.DataVisualization.Charting.Chart chrData;
         private System.Windows.Forms.Button btnReset;
+        private System.Windows.Forms.TextBox txtInput;
     }
 }
 

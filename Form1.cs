@@ -16,6 +16,7 @@ namespace Math_Random_IA
 {
     public partial class frmMain : Form
     {
+        int newCount = 100;
         Random random = new Random();
         float[] rands = new float[4];
         float output;
@@ -39,7 +40,8 @@ namespace Math_Random_IA
 
         private void btnEnter_Click(object sender, EventArgs e)
         {
-            for (int count = 0; count < 1000000; count++)
+            newCount = Convert.ToInt32(txtInput.Text);
+            for (int count = 0; count < newCount; count++)
             {
                 for (int i = 0; i < rands.Length; i++)
                 {
@@ -50,7 +52,7 @@ namespace Math_Random_IA
                 dataCollection[(int)Math.Floor(output * 10)]++;
             }
             lblOutput.ResetText();
-            lblOutput.Text += attempts;
+            lblOutput.Text += "Attempts: " + attempts;
             for (int i = 0; i < dataCollection.Length; i++)
             {
                 lblOutput.Text += "\r\n" + i / 10f + ": " + dataCollection[i];
