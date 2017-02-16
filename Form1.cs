@@ -17,12 +17,15 @@ namespace Math_Random_IA
     public partial class frmMain : Form
     {
         int newCount = 100;
+        double total = 0;
         Random random = new Random();
         float[] rands = new float[4];
         float output;
         int[] dataCollection = new int[40];
+        //Applying a transformation of 40 to the graph - this graph will seperate the distance from 0 and 1 into 40 equal parts.
         int attempts = 0;
-        //The index divided by ten equals the result of the function - and we increase the int stored in that index slot by one when we get one there.
+
+        //The function we are analyzing. It will output a number from 0 to 4.
         float generate(float[] r)
         {
             //This isn't exactly good style, but I'll only be putting in arrays with 4 indexes (0-3) so it's fine
@@ -53,20 +56,32 @@ namespace Math_Random_IA
             }
             lblOutput.ResetText();
             lblOutput.Text += "Attempts: " + attempts;
+            chrData.Series[0].Points.Clear();
+            chrData.Series[0].Points.AddXY(0, 0);
+            chrData.Series[1].Points.Clear();
+            chrData.Series[1].Points.AddXY(0, 0);
+            total = 0;
             for (int i = 0; i < dataCollection.Length; i++)
             {
-                lblOutput.Text += "\r\n" + i / 10f + ": " + dataCollection[i];
+                total += (double)dataCollection[i] / attempts;
+                if (!chkCu.Checked)
+                    chrData.Series[0].Points.AddXY((i / 10f + .1f), (double)dataCollection[i] / attempts);
+                else
+                    chrData.Series[1].Points.AddXY((i / 10f + .1f), total);
+                lblOutput.Text += "\r\n" + (i / 10f) + " - " + (i / 10f + .1f) + ": " + dataCollection[i];
             }
+            lblOutput.Text += "\r\n Sum: " + total;
         }
 
         private void btnReset_Click(object sender, EventArgs e)
         {
+            total = 0;
             attempts = 0;
             lblOutput.ResetText();
             for (int i = 0; i < dataCollection.Length; i++)
             {
                 dataCollection[i] = 0;
-                lblOutput.Text += "\r\n" + i / 10f + ": " + dataCollection[i];
+                lblOutput.Text += "\r\n" + (i / 10f + .1f) + ": " + dataCollection[i];
             }
         }
     }
