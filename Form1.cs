@@ -22,13 +22,14 @@ namespace Math_Random_IA
         float[] rands = new float[4];
         float output;
         int[] dataCollection = new int[40];
-        //Applying a transformation of 40 to the graph - this graph will seperate the distance from 0 and 1 into 40 equal parts.
         int attempts = 0;
 
         //The function we are analyzing. It will output a number from 0 to 4.
         float generate(float[] r)
         {
             //This isn't exactly good style, but I'll only be putting in arrays with 4 indexes (0-3) so it's fine
+            //Also important to note: The array has an index of 40, but this number only generates between 0 and 4.
+            //As a result, the final product will be horizontally stretched by a factor of 1/10
             return ((r[0] + r[1]) * (r[2] + r[3]));
         }
         public frmMain()
@@ -54,11 +55,16 @@ namespace Math_Random_IA
                 output = generate(rands);
                 dataCollection[(int)Math.Floor(output * 10)]++;
             }
+            graphData();
+            
+        }
+        public void graphData()
+        {
             lblOutput.ResetText();
             lblOutput.Text += "Attempts: " + attempts;
             chrData.Series[0].Points.Clear();
-            chrData.Series[0].Points.AddXY(0, 0);
             chrData.Series[1].Points.Clear();
+            chrData.Series[0].Points.AddXY(0, 0);
             chrData.Series[1].Points.AddXY(0, 0);
             total = 0;
             for (int i = 0; i < dataCollection.Length; i++)
@@ -70,7 +76,13 @@ namespace Math_Random_IA
                     chrData.Series[1].Points.AddXY((i / 10f + .1f), total);
                 lblOutput.Text += "\r\n" + (i / 10f) + " - " + (i / 10f + .1f) + ": " + dataCollection[i];
             }
-            lblOutput.Text += "\r\n Sum: " + total;
+            if (!chkCu.Checked)
+            {
+                chrData.Series[0].Points.AddXY(4, 0);
+                chrData.Titles["title"].Text = "Probability Density Function for f(x)";
+            }
+            else
+                chrData.Titles["title"].Text = "Cumulative Distribution Function for f(x)";
         }
 
         private void btnReset_Click(object sender, EventArgs e)
@@ -83,6 +95,11 @@ namespace Math_Random_IA
                 dataCollection[i] = 0;
                 lblOutput.Text += "\r\n" + (i / 10f + .1f) + ": " + dataCollection[i];
             }
+        }
+
+        private void chkCu_CheckedChanged(object sender, EventArgs e)
+        {
+            graphData();
         }
     }
 }

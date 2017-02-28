@@ -28,13 +28,14 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint1 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(1D, 2D);
-            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint2 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(2D, 1D);
-            System.Windows.Forms.DataVisualization.Charting.Title title1 = new System.Windows.Forms.DataVisualization.Charting.Title();
-            System.Windows.Forms.DataVisualization.Charting.Title title2 = new System.Windows.Forms.DataVisualization.Charting.Title();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint3 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(1D, 2D);
+            System.Windows.Forms.DataVisualization.Charting.Series series4 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint4 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(2D, 1D);
+            System.Windows.Forms.DataVisualization.Charting.Title title4 = new System.Windows.Forms.DataVisualization.Charting.Title();
+            System.Windows.Forms.DataVisualization.Charting.Title title5 = new System.Windows.Forms.DataVisualization.Charting.Title();
+            System.Windows.Forms.DataVisualization.Charting.Title title6 = new System.Windows.Forms.DataVisualization.Charting.Title();
             this.btnEnter = new System.Windows.Forms.Button();
             this.lblOutput = new System.Windows.Forms.Label();
             this.chrData = new System.Windows.Forms.DataVisualization.Charting.Chart();
@@ -67,46 +68,51 @@
             // 
             // chrData
             // 
-            chartArea1.AxisX.Interval = 1D;
-            chartArea1.AxisX.MajorGrid.Interval = 1D;
-            chartArea1.AxisX.MajorGrid.LineWidth = 2;
-            chartArea1.AxisX.MajorTickMark.Interval = 0.1D;
-            chartArea1.AxisX.Maximum = 4D;
-            chartArea1.AxisX.Minimum = 0D;
-            chartArea1.AxisX.MinorGrid.Enabled = true;
-            chartArea1.AxisX.MinorGrid.Interval = 0.1D;
-            chartArea1.AxisX.MinorGrid.LineColor = System.Drawing.Color.Gray;
-            chartArea1.AxisX2.IsStartedFromZero = false;
-            chartArea1.Name = "ChartArea1";
-            this.chrData.ChartAreas.Add(chartArea1);
+            chartArea2.AxisX.Interval = 1D;
+            chartArea2.AxisX.MajorGrid.Interval = 1D;
+            chartArea2.AxisX.MajorGrid.LineWidth = 2;
+            chartArea2.AxisX.MajorTickMark.Interval = 0.1D;
+            chartArea2.AxisX.Maximum = 4D;
+            chartArea2.AxisX.Minimum = 0D;
+            chartArea2.AxisX.MinorGrid.Enabled = true;
+            chartArea2.AxisX.MinorGrid.Interval = 0.1D;
+            chartArea2.AxisX.MinorGrid.LineColor = System.Drawing.Color.Gray;
+            chartArea2.AxisX2.IsStartedFromZero = false;
+            chartArea2.Name = "ChartArea1";
+            this.chrData.ChartAreas.Add(chartArea2);
             this.chrData.Location = new System.Drawing.Point(372, 12);
             this.chrData.Name = "chrData";
-            series1.BorderWidth = 2;
-            series1.ChartArea = "ChartArea1";
-            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series1.Color = System.Drawing.Color.Red;
-            series1.Name = "Data";
-            series1.Points.Add(dataPoint1);
-            series1.XValueType = System.Windows.Forms.DataVisualization.Charting.ChartValueType.Double;
-            series1.YValueType = System.Windows.Forms.DataVisualization.Charting.ChartValueType.Double;
-            series2.BorderColor = System.Drawing.Color.Blue;
-            series2.ChartArea = "ChartArea1";
-            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Area;
-            series2.Color = System.Drawing.Color.DodgerBlue;
-            series2.Name = "Cumulative";
-            series2.Points.Add(dataPoint2);
-            this.chrData.Series.Add(series1);
-            this.chrData.Series.Add(series2);
-            this.chrData.Size = new System.Drawing.Size(772, 344);
+            series3.BorderWidth = 2;
+            series3.ChartArea = "ChartArea1";
+            series3.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series3.Color = System.Drawing.Color.Red;
+            series3.Name = "Data";
+            series3.Points.Add(dataPoint3);
+            series3.XValueType = System.Windows.Forms.DataVisualization.Charting.ChartValueType.Double;
+            series3.YValueType = System.Windows.Forms.DataVisualization.Charting.ChartValueType.Double;
+            series4.BorderColor = System.Drawing.Color.Transparent;
+            series4.BorderWidth = 2;
+            series4.ChartArea = "ChartArea1";
+            series4.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series4.Color = System.Drawing.Color.Blue;
+            series4.Name = "Cumulative";
+            series4.Points.Add(dataPoint4);
+            this.chrData.Series.Add(series3);
+            this.chrData.Series.Add(series4);
+            this.chrData.Size = new System.Drawing.Size(921, 584);
             this.chrData.TabIndex = 2;
             this.chrData.Text = "Data Chart";
-            title1.Name = "Title1";
-            title1.Text = "Result Obtained";
-            title2.Docking = System.Windows.Forms.DataVisualization.Charting.Docking.Left;
-            title2.Name = "Title2";
-            title2.Text = "Times obtained";
-            this.chrData.Titles.Add(title1);
-            this.chrData.Titles.Add(title2);
+            title4.Docking = System.Windows.Forms.DataVisualization.Charting.Docking.Bottom;
+            title4.Name = "xAxis";
+            title4.Text = "f(x)";
+            title5.Docking = System.Windows.Forms.DataVisualization.Charting.Docking.Left;
+            title5.Name = "yAxis";
+            title5.Text = "Frequency";
+            title6.Name = "title";
+            title6.Text = "Probability Density Function for f(x)";
+            this.chrData.Titles.Add(title4);
+            this.chrData.Titles.Add(title5);
+            this.chrData.Titles.Add(title6);
             // 
             // btnReset
             // 
@@ -135,12 +141,13 @@
             this.chkCu.TabIndex = 5;
             this.chkCu.Text = "Cumulative?";
             this.chkCu.UseVisualStyleBackColor = true;
+            this.chkCu.CheckedChanged += new System.EventHandler(this.chkCu_CheckedChanged);
             // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1450, 605);
+            this.ClientSize = new System.Drawing.Size(1303, 620);
             this.Controls.Add(this.chkCu);
             this.Controls.Add(this.txtInput);
             this.Controls.Add(this.btnReset);
