@@ -29,7 +29,7 @@ namespace Math_Random_IA
         {
             //This isn't exactly good style, but I'll only be putting in arrays with 4 indexes (0-3) so it's fine
             //Also important to note: The array has an index of 40, but this number only generates between 0 and 4.
-            //As a result, the final product will be horizontally stretched by a factor of 1/10
+            //As a result, the final product will be horizontally compressed by a factor of 10
             return ((r[0] + r[1]) * (r[2] + r[3]));
         }
         public frmMain()
@@ -60,8 +60,14 @@ namespace Math_Random_IA
         }
         public void graphData()
         {
+            double xValue, yValue, mean, variance;
+            mean = 0;
+            variance = 0;
             lblOutput.ResetText();
-            lblOutput.Text += "Attempts: " + attempts;
+            if(chkPdf.Checked)
+                lblOutput.Text += "Coords";
+            else
+                lblOutput.Text += "Attempts: " + attempts;
             chrData.Series[0].Points.Clear();
             chrData.Series[1].Points.Clear();
             chrData.Series[0].Points.AddXY(0, 0);
@@ -69,20 +75,68 @@ namespace Math_Random_IA
             total = 0;
             for (int i = 0; i < dataCollection.Length; i++)
             {
+                //The code below this point is used for the visual graph and is not related to the mean and variance calculations.
                 total += (double)dataCollection[i] / attempts;
-                if (!chkCu.Checked)
+                if (!chkCu.Checked && !chkPdf.Checked)
+                {
                     chrData.Series[0].Points.AddXY((i / 10f + .1f), (double)dataCollection[i] / attempts);
-                else
+                    lblOutput.Text += "\r\n" + (i / 10f) + " - " + (i / 10f + .1f) + ": " + dataCollection[i];
+                }
+                else if (chkCu.Checked)
+                {
                     chrData.Series[1].Points.AddXY((i / 10f + .1f), total);
-                lblOutput.Text += "\r\n" + (i / 10f) + " - " + (i / 10f + .1f) + ": " + dataCollection[i];
+                    lblOutput.Text += "\r\n" + (i / 10f) + " - " + (i / 10f + .1f) + ": " + dataCollection[i];
+                }
+                else
+                {
+                    chrData.Series[0].Points.AddXY((i / 10f + .1f) / 4f, (double)(dataCollection[i] * dataCollection.Length) / attempts);
+                    lblOutput.Text += "\r\n(" + (i / 10f + .1f) / 4f + ", " + (double)(dataCollection[i] * dataCollection.Length) / attempts + ")";
+                }
+                //The code above this point is used for the visual graph and is not related to the mean and variance calculations.
+                //This code is run 40 times, and the variable "i" is used to denote the current loop number (from 0 to 39 inclusive).
+                xValue = (i / 10f + .1f) / 4f; //The loop number is converted to the x coordinate of the current data point being graphed.
+                yValue = (double)(dataCollection[i] * dataCollection.Length) / attempts; /*dataCollection is the set which contains the raw data found in
+                                                                                           figure 2a. It is multiplied by 40(the set length) and then divided
+                                                                                           by the total amount of times the function ran. This returns the
+                                                                                           Y value of the data point.*/
+                mean += (xValue * yValue); //Each set of the product of the x and y values are added onto the mean - which starts at zero.
             }
-            if (!chkCu.Checked)
+            //This code only runs once: it does not loop 40 times. It runs AFTER all forty loops.
+            mean /= dataCollection.Length; //Divides our current value for mean by 40 - the amount of x values we have.
+            //"mean" now equals the mean of the Probability Density Function.
+
+            for(int i = 0; i < dataCollection.Length; i++)
+            {
+                //We're in another "for" loop: this code will loop 40 times, and it doesn't start until AFTER all the code above it has ran.
+                //We're redefining the xValue and yValue.
+                xValue = (i / 10f + .1f) / 4f;
+                yValue = (double)(dataCollection[i] * dataCollection.Length) / attempts;               
+                //Adds (|mean - x|^2)y to the variance - which starts at zero.
+                variance += Math.Pow(Math.Abs(mean - xValue), 2) * yValue;
+            }
+            //We're outside the for loop - the below code runs AFTER all the above code has finished (loops and all).
+            variance /= dataCollection.Length;
+            //"variance" now equals the variance of the Probability Density Function.
+            lblOutput.Text += "\r\nMean: " + mean;
+            lblOutput.Text += "\r\nVariance: " + variance;
+            if (!chkCu.Checked && !chkPdf.Checked)
             {
                 chrData.Series[0].Points.AddXY(4, 0);
-                chrData.Titles["title"].Text = "Probability Density Function for f(x)";
+                chrData.Titles["title"].Text = "Probability Distribution for f(x)";
+                chrData.ChartAreas[0].AxisX.Interval = 1;
+                chrData.ChartAreas[0].AxisX.Maximum = 4;
+            }
+            else if (chkCu.Checked)
+            {
+                chrData.Titles["title"].Text = "Cumulative Distribution Function for f(x)";
             }
             else
-                chrData.Titles["title"].Text = "Cumulative Distribution Function for f(x)";
+            {
+                chrData.Series[0].Points.AddXY(1, 0);
+                chrData.Titles["title"].Text = "Probability Density Function for f(x)";
+                chrData.ChartAreas[0].AxisX.Interval = 0.25;
+                chrData.ChartAreas[0].AxisX.Maximum = 1;
+            }
         }
 
         private void btnReset_Click(object sender, EventArgs e)
@@ -98,6 +152,11 @@ namespace Math_Random_IA
         }
 
         private void chkCu_CheckedChanged(object sender, EventArgs e)
+        {
+            graphData();
+        }
+
+        private void chkPdf_CheckedChanged(object sender, EventArgs e)
         {
             graphData();
         }
